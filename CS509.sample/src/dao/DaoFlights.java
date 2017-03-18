@@ -17,6 +17,8 @@ import org.xml.sax.SAXException;
 
 import Flight.Flight;
 import Flight.Flights;
+import Flight.Seating;
+import Time.Time;
 
 
 
@@ -32,14 +34,16 @@ public class DaoFlights {
 		
 		for (int i = 0; i < nodesFlights.getLength(); i++) {
 			Element elementFlight = (Element) nodesFlights.item(i);
-			Flight flight = buildFlight (elementFlight);
+			Flight flight = buildFlight(elementFlight);
 			
 //			if (flight.isValid()) {
 //				flights.add(flight);
 //			}
 		}
 		
-		static private Flight buildFlight (Node nodeFlight) {
+		return flights;
+	}
+		static private Flight buildFlight(Node nodeFlight) {
 			/**
 			 * Instantiate an empty Flight object
 			 */
@@ -66,16 +70,13 @@ public class DaoFlights {
 			/**
 			 * Update the Flight object with values from XML node
 			 */
-			flight.name(name);
-			flight.code(code);
-			flight.latitude(latitude);
-			flight.longitude(longitude);
+			Flight( airplane,  number,  arrival,  departure,  departureTime,
+					 arrivalTime,  seating);
 			
 			return flight;
 		}
 		
-		return flights;
-	}
+
 	
 	
 	static private Document buildDomDoc (String xmlString) {

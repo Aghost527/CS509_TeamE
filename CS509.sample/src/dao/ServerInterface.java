@@ -92,7 +92,7 @@ public class ServerInterface {
 	}
 	
 	
-	public Flights getFlighs (String teamName) {
+	public Flights getFlighs (String teamName, String airportCode, String Date) {
 
 		URL url;
 		HttpURLConnection connection;
@@ -107,7 +107,7 @@ public class ServerInterface {
 			/**
 			 * Create an HTTP connection to the server for a GET 
 			 */
-			url = new URL(mUrlBase + QueryFactory.getAirports(teamName));
+			url = new URL(mUrlBase + QueryFactory.getDepartingAirplanes(teamName,airportCode,Date));
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
 			connection.setRequestProperty("User-Agent", teamName);
@@ -136,7 +136,7 @@ public class ServerInterface {
 
 		xmlFlights = result.toString();
 		System.out.println("xmlFlights"+xmlFlights);
-		flights = DaoAirport.addAll(xmlFlights);
+		flights = DaoFlights.addAll(xmlFlights);
 		//daoflights
 		return flights;
 		

@@ -1,7 +1,6 @@
 package Flight;
 
 import Time.Time;
-import utils.Saps;
 
 /**
  * This class holds values pertaining to a single Airport. Class member attributes
