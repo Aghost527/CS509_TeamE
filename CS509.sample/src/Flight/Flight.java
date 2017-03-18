@@ -29,8 +29,9 @@ public class Flight {
 	private String number;
 	private String arrival;              // Three character code of the Arrival airport
 	private String departure;              // Three character code of the Departure airport
-	private Time departureTime;
 	private Time arrivalTime;
+	private Time departureTime;
+
 	private Seating seating;
 	private int flightTime;
 	
@@ -49,9 +50,13 @@ public class Flight {
 	 * @param seating
 	 * @param flightTime
 	 */
-	public Flight(String airplane, String number, String arrival, String departure, Time departureTime,
-			Time arrivalTime, Seating seating, int flightTime) {
+	public Flight(String airplane, String number, String arrival, String departure, 
+			Time arrivalTime, Time departureTime, Seating seating, int flightTime) {
 		super();
+		if (!isValidCode(departure)) 
+			throw new IllegalArgumentException(departure);
+		if (!isValidCode(arrival)) 
+			throw new IllegalArgumentException(arrival);
 		this.airplane = airplane;
 		this.number = number;
 		this.arrival = arrival;
@@ -162,7 +167,12 @@ public class Flight {
 		this.seating = seating;
 	}
 	
-	
+	public boolean isValidCode (String code) {
+		// If we don't have a 3 character code it can't be valid valid
+		if ((code == null) || (code.length() != 3))
+			return false;
+		return true;
+	}
 
 
 }

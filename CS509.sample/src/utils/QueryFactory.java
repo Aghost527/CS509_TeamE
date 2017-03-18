@@ -22,12 +22,12 @@ public class QueryFactory {
 	
 	
 	public static String getDepartingAirplanes(String teamName, String airportCode,  String Date){
-		return "?team" + teamName + "&action=list&list_type=departing&airport" + airportCode + "day=" + Date;
+		return "?team=" + teamName + "&action=list&list_type=departing&airport=" + airportCode + "&day=" + Date;
 	}
 	
 	
 	public static String getArrivingAirplanes( String teamName, String airportCode, String Date){
-		return "?team" + teamName + "&action=list_type=arriving&airport" + airportCode + "day=" + Date;
+		return "?team=" + teamName + "&action=list_type=arriving&airport=" + airportCode + "&day=" + Date;
 	}
 
 	

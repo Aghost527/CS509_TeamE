@@ -10,7 +10,16 @@ public class Time {
 	
 	
 	Time( int year, String month,int day, String clock,String timeZone){
-
+//		if (!isValidYear(year)) 
+//			throw new IllegalArgumentException(year);
+//		if (!isValidMonth(month)) 
+//			throw new IllegalArgumentException(month);
+//		if (!isValidDay(day)) 
+//			throw new IllegalArgumentException(day);
+//		if (!isValidClock(clock)) 
+//			throw new IllegalArgumentException(clock);
+//		if (!isValidZone(timeZone)) 
+//			throw new IllegalArgumentException(timeZone);
 		this.year=year;
 		this.month=month;
 		this.day=day;
@@ -18,6 +27,23 @@ public class Time {
 		this.timeZone=timeZone;
 	}
 	
+	Time( String year, String month,String day, String clock,String timeZone){
+//		if (!isValidYear(year)) 
+//			throw new IllegalArgumentException(year);
+//		if (!isValidMonth(month)) 
+//			throw new IllegalArgumentException(month);
+//		if (!isValidDay(day)) 
+//			throw new IllegalArgumentException(day);
+//		if (!isValidClock(clock)) 
+//			throw new IllegalArgumentException(clock);
+//		if (!isValidZone(timeZone)) 
+//			throw new IllegalArgumentException(timeZone);
+		this.year=Integer.parseInt(year);
+		this.month=month;
+		this.day=Integer.parseInt(day);
+		this.clock=clock;
+		this.timeZone=timeZone;
+	}
 	
 	public int getYear() {
 		return year;
@@ -50,5 +76,24 @@ public class Time {
 		this.timeZone = timeZone;
 	} 
 	
+	/**
+	 * Check if time is valid
+	 * 
+	 * @param time
+	 * @return true if format is right
+	 */
+	public boolean isValidLongitude (String time) {
+		try {
+			String[] t=time.split(":");
+			if (t.length!=2)return false;
+			int hour=Integer.parseInt(t[0]);
+			int minute=Integer.parseInt(t[1]);
+			if (hour<0|hour>24)return false;
+			if (minute<0|minute>60)return false;
+		} catch (NullPointerException | NumberFormatException ex) {
+			return false;
+		}
+		return true;
+	}
 	
 }

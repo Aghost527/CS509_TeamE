@@ -60,23 +60,23 @@ public class DaoFlights {
 			
 			// The flight element has attributes of Name and 3 character flight code
 			Element elementFlight = (Element) nodeFlight;
-			name = elementFlight.getAttributeNode("Name").getValue();
-			code = elementFlight.getAttributeNode("Code").getValue();
-			
-			// The latitude and longitude are child elements
-			Element elementLatLng;
-			elementLatLng = (Element)elementFlight.getElementsByTagName("Latitude").item(0);
-			latitude = Double.parseDouble(getCharacterDataFromElement(elementLatLng));
-			
-			elementLatLng = (Element)elementFlight.getElementsByTagName("Longitude").item(0);
-			longitude = Double.parseDouble(getCharacterDataFromElement(elementLatLng));
-
-			/**
-			 * Update the Flight object with values from XML node
-			 */
-			flight( airplane,  number,  arrival,  departure,  departureTime,
-					 arrivalTime,  seating);
-			
+//			name = elementFlight.getAttributeNode("Name").getValue();
+//			code = elementFlight.getAttributeNode("Code").getValue();
+//			
+//			// The latitude and longitude are child elements
+//			Element elementLatLng;
+//			elementLatLng = (Element)elementFlight.getElementsByTagName("Latitude").item(0);
+//			latitude = Double.parseDouble(getCharacterDataFromElement(elementLatLng));
+//			
+//			elementLatLng = (Element)elementFlight.getElementsByTagName("Longitude").item(0);
+//			longitude = Double.parseDouble(getCharacterDataFromElement(elementLatLng));
+//
+//			/**
+//			 * Update the Flight object with values from XML node
+//			 */
+//			flight( airplane,  number,  arrival,  departure,  departureTime,
+//					 arrivalTime,  seating);
+			System.out.println("1");
 			return flight;
 		}
 		
