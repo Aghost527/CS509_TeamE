@@ -27,7 +27,7 @@ public class Time {
 		this.timeZone=timeZone;
 	}
 	
-	Time( String year, String month,String day, String clock,String timeZone){
+	public Time( String year, String month,String day, String clock,String timeZone){
 //		if (!isValidYear(year)) 
 //			throw new IllegalArgumentException(year);
 //		if (!isValidMonth(month)) 
@@ -45,6 +45,17 @@ public class Time {
 		this.timeZone=timeZone;
 	}
 	
+	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Time [year=" + year + ", month=" + month + ", day=" + day + ", clock=" + clock + ", timeZone="
+				+ timeZone + "]";
+	}
+
 	public int getYear() {
 		return year;
 	}

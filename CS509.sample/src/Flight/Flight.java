@@ -20,7 +20,7 @@ import Time.Time;
 public class Flight {
 
 
-
+	
 	
 	/**
 	 * Airport attributes as defined by the CS509 server interface XML
@@ -47,11 +47,11 @@ public class Flight {
 	 * @param departure
 	 * @param departureTime
 	 * @param arrivalTime
-	 * @param seating
-	 * @param flightTime
+	 * @param arrivalTime2
+	 * @param seats
 	 */
 	public Flight(String airplane, String number, String arrival, String departure, 
-			Time arrivalTime, Time departureTime, Seating seating, int flightTime) {
+			Time arrivalTime, Time departureTime, Seating seats, int flightTime) {
 		super();
 		if (!isValidCode(departure)) 
 			throw new IllegalArgumentException(departure);
@@ -63,9 +63,24 @@ public class Flight {
 		this.departure = departure;
 		this.departureTime = departureTime;
 		this.arrivalTime = arrivalTime;
-		this.seating = seating;
+		this.seating = seats;
 		this.flightTime = flightTime;
 	}
+	
+	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Flight [airplane=" + airplane + ", number=" + number + ", arrival=" + arrival + ", departure="
+				+ departure + ", arrivalTime=" + arrivalTime.toString() + ", departureTime=" + departureTime.toString() + ", seating="
+				+ seating.toString() + ", flightTime=" + flightTime + "]";
+	}
+
+
+
 	public Flight() {
 		// TODO Auto-generated constructor stub
 	}

@@ -36,16 +36,17 @@ public class Driver {
 		while(true){
 		
 		System.out.println("departAirportCode:");
-		
+//		
 	    String code = s.nextLine();
-		System.out.println("departTime (YYYY_MM_DD):");
+		System.out.println("departTime (YYYY_MM_DD) e.g. 2017_05_10 :");
 		String time = s.nextLine();
-//		Flights flights = resSys.getFlighs(teamName,code,time);
-		Flights flights = resSys.getFlighs(teamName,"BOS","2017_05_10");
+		Flights flights = resSys.getFlighs(teamName,code,time);
+//		Flights flights = resSys.getFlighs(teamName,"BOS","2017_05_10");
 		
 		for (Flight flight : flights) {
 			System.out.println(flight.toString());
 		}
+		break;
 		}
 	}
 }

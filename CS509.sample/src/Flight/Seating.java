@@ -23,6 +23,24 @@ public class Seating {
 		this.firstclassRemaining = firstclassRemaining;
 		this.coachRemaining = coachRemaining;
 	}
+	
+	
+	
+	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Seating [firstclassPrice=" + firstclassPrice + ", coachPrice=" + coachPrice + ", firstclassRemaining="
+				+ firstclassRemaining + ", coachRemaining=" + coachRemaining + "]";
+	}
+
+
+
+
+
 	public String getFirstclassPrce() {
 		return firstclassPrice;
 	}

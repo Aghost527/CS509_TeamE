@@ -31,7 +31,7 @@ public class DaoFlights {
 		// then iterate over all nodes adding each flight to our collection
 		Document docFlights = buildDomDoc (xmlFlights);
 		NodeList nodesFlights = docFlights.getElementsByTagName("Flight");
-		System.out.println("len"+nodesFlights.getLength());
+//		System.out.println("len"+nodesFlights.getLength());
 		for (int i = 0; i < nodesFlights.getLength(); i++) {
 			Element elementFlight = (Element) nodesFlights.item(i);
 			Flight flight = buildFlight(elementFlight);
@@ -52,7 +52,7 @@ public class DaoFlights {
 			Flight flight = new Flight();
 
 			String Airplane;
-			String FlightTime;
+			int FlightTime;
 			String Number;
 			
 			String departureCode;
@@ -61,42 +61,57 @@ public class DaoFlights {
 			String arrivalCode;
 			String arrivalTime;
 			
-			Seating FirstClass;
-			Seating Coach;
+			 
 			
 			// The flight element has attributes of Name and 3 character flight code
 			Element elementFlight = (Element) nodeFlight;
 			Airplane = elementFlight.getAttributeNode("Airplane").getValue();
-			FlightTime = elementFlight.getAttributeNode("FlightTime").getValue();
+			FlightTime = Integer.parseInt(elementFlight.getAttributeNode("FlightTime").getValue());
 			Number = elementFlight.getAttributeNode("Number").getValue();
 			
 			// The Departure, Arrival and Seating are child elements
-			Element Departure;
-			Departure = (Element)elementFlight.getElementsByTagName("Departure");
+			Element Departure ;
+			Departure = (Element)elementFlight.getElementsByTagName("Departure").item(0);
+			
 			Element deCode = (Element)Departure.getElementsByTagName("Code").item(0);
-			departureCode = deCode.toString();
+			departureCode = getCharacterDataFromElement(deCode);
+//			System.out.println(departureCode);
 			Element deTime = (Element)Departure.getElementsByTagName("Time").item(0);
-			departureTime = deTime.toString();
+			departureTime = getCharacterDataFromElement(deTime);
+			String[] dTime=departureTime.split(" ");
+			Time tDeTime=new Time(dTime[0],dTime[1],dTime[2],dTime[3],dTime[4]);
 			
 			//elementLatLng = (Element)elementFlight.getElementsByTagName("Longitude").item(0);
 			//longitude = Double.parseDouble(getCharacterDataFromElement(elementLatLng));
 			
 			Element Arrival;
-			Arrival = (Element)elementFlight.getElementsByTagName("Arrival");
+			Arrival = (Element)elementFlight.getElementsByTagName("Arrival").item(0);
 			Element arCode = (Element)Arrival.getElementsByTagName("Code").item(0);
-			arrivalCode = arCode.toString();
+			arrivalCode = getCharacterDataFromElement(arCode);
 			Element arTime = (Element)Arrival.getElementsByTagName("Time").item(0);
-			arrivalTime = arTime.toString();
+			arrivalTime = getCharacterDataFromElement(arTime);
+			String[] aTime=arrivalTime.split(" ");
+			Time tArTime=new Time(aTime[0],aTime[1],aTime[2],aTime[3],aTime[4]);
 			
-			
+			Element flightSeating;
+			flightSeating = (Element)elementFlight.getElementsByTagName("Seating").item(0);
+			Element coachSeating = (Element)flightSeating.getElementsByTagName("Coach").item(0);
+			String coachPrice = coachSeating.getAttributeNode("Price").getValue();
+			int coachRemaining = Integer.parseInt(getCharacterDataFromElement(coachSeating));
+				
+			Element firstclassSeating = (Element)flightSeating.getElementsByTagName("FirstClass").item(0);
+			String firstclassPrice = firstclassSeating.getAttributeNode("Price").getValue();
+			int firstRemaining = Integer.parseInt(getCharacterDataFromElement(firstclassSeating));
+
+			Seating seats=new Seating(firstclassPrice, coachPrice, firstRemaining, coachRemaining);
 			
 			/**
 			 * Update the Flight object with values from XML node
 			 */
-//			Flight( airplane,  number,  arrival,  departure,  departureTime,
-//					 arrivalTime,  seating);
+			
 //			
-			return flight;
+			return new Flight( Airplane,  Number,  arrivalCode, departureCode,tDeTime ,  tArTime,
+					  seats,FlightTime );
 		}
 		
 
