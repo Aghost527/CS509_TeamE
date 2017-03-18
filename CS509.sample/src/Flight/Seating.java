@@ -6,28 +6,28 @@ public class Seating {
 
 	
 	
-	private String firstclassPrce;
+	private String firstclassPrice;
 	private String coachPrice;
 	private int firstclassRemaining;
 	private int coachRemaining;
 	/**
-	 * @param firstclassPrce
+	 * @param firstclassPrice
 	 * @param coachPrice
 	 * @param firstclassRemaining
 	 * @param coachRemaining
 	 */
-	public Seating(String firstclassPrce, String coachPrice, int firstclassRemaining, int coachRemaining) {
+	public Seating(String firstclassPrice, String coachPrice, int firstclassRemaining, int coachRemaining) {
 		super();
-		this.firstclassPrce = firstclassPrce;
+		this.firstclassPrice = firstclassPrice;
 		this.coachPrice = coachPrice;
 		this.firstclassRemaining = firstclassRemaining;
 		this.coachRemaining = coachRemaining;
 	}
 	public String getFirstclassPrce() {
-		return firstclassPrce;
+		return firstclassPrice;
 	}
-	public void setFirstclassPrce(String firstclassPrce) {
-		this.firstclassPrce = firstclassPrce;
+	public void setFirstclassPrce(String firstclassPrice) {
+		this.firstclassPrice = firstclassPrice;
 	}
 	public String getCoachPrice() {
 		return coachPrice;
