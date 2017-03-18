@@ -70,7 +70,7 @@ public class DaoFlights {
 			/**
 			 * Update the Flight object with values from XML node
 			 */
-			Flight( airplane,  number,  arrival,  departure,  departureTime,
+			flight( airplane,  number,  arrival,  departure,  departureTime,
 					 arrivalTime,  seating);
 			
 			return flight;
