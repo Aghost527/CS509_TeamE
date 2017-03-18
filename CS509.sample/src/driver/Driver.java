@@ -40,7 +40,8 @@ public class Driver {
 	    String code = s.nextLine();
 		System.out.println("departTime (YYYY_MM_DD):");
 		String time = s.nextLine();
-		Flights flights = resSys.getFlighs(teamName,code,time);
+//		Flights flights = resSys.getFlighs(teamName,code,time);
+		Flights flights = resSys.getFlighs(teamName,"BOS","2017_05_10");
 		
 		for (Flight flight : flights) {
 			System.out.println(flight.toString());
