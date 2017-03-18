@@ -49,10 +49,14 @@ public class DaoFlights {
 			 */
 			Flight flight = new Flight();
 
-			String name;
-			String code;
-			double latitude;
-			double longitude;
+			 String airplane;			// Airplane type as an attribute
+			 String number;
+			 String arrival;              // Three character code of the Arrival airport
+			 String departure;              // Three character code of the Departure airport
+			 Time departureTime;
+			 Time arrivalTime;
+			 Seating seating;
+			 int flightTime;
 			
 			// The flight element has attributes of Name and 3 character flight code
 			Element elementFlight = (Element) nodeFlight;
