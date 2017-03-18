@@ -32,11 +32,13 @@ public class Flight {
 	private Time departureTime;
 	private Time arrivalTime;
 	private Seating seating;
+	private int flightTime;
 	
 	
 	
 	
 	
+
 	/**
 	 * @param airplane
 	 * @param number
@@ -45,9 +47,10 @@ public class Flight {
 	 * @param departureTime
 	 * @param arrivalTime
 	 * @param seating
+	 * @param flightTime
 	 */
 	public Flight(String airplane, String number, String arrival, String departure, Time departureTime,
-			Time arrivalTime, Seating seating) {
+			Time arrivalTime, Seating seating, int flightTime) {
 		super();
 		this.airplane = airplane;
 		this.number = number;
@@ -56,6 +59,7 @@ public class Flight {
 		this.departureTime = departureTime;
 		this.arrivalTime = arrivalTime;
 		this.seating = seating;
+		this.flightTime = flightTime;
 	}
 	public Flight() {
 		// TODO Auto-generated constructor stub
@@ -71,6 +75,19 @@ public class Flight {
 	 */
 	public void setAirplane(String airplane) {
 		this.airplane = airplane;
+	}
+	
+	/**
+	 * @return the flightTime
+	 */
+	public int getFlightTime() {
+		return flightTime;
+	}
+	/**
+	 * @param flightTime the flightTime to set
+	 */
+	public void setFlightTime(int flightTime) {
+		this.flightTime = flightTime;
 	}
 	/**
 	 * @return the number

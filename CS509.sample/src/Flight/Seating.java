@@ -6,7 +6,7 @@ public class Seating {
 
 	
 	
-	private String firstclassPrce;
+	private String firstclassPrice;
 	private String coachPrice;
 	private int firstclassRemaining;
 	private int coachRemaining;
