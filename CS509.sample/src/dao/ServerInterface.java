@@ -135,7 +135,7 @@ public class ServerInterface {
 		}
 
 		xmlFlights = result.toString();
-		System.out.println("xmlFlights"+xmlFlights);
+//		System.out.println("xmlFlights"+xmlFlights);
 		flights = DaoFlights.addAll(xmlFlights);
 		//daoflights
 		return flights;

@@ -12,12 +12,14 @@ import dao.ServerInterface;
 
 
 public class Driver {
-
+	
+	static DriverManager driverManager=new DriverManager();
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		ServerInterface resSys = new ServerInterface();
+		
 //		if (args.length != 1) {
 //			System.err.println("usage: CS509.sample teamName");
 //			System.exit(-1);
@@ -33,20 +35,23 @@ public class Driver {
 		Scanner s = new Scanner(System.in);
 		String teamName = "TeamE";
 		// Try to get a list of airports
-		while(true){
+//		while(true){
 		
-		System.out.println("departAirportCode:");
-//		
+		System.out.println("departAirportCode:");	
 	    String code = s.nextLine();
 		System.out.println("departTime (YYYY_MM_DD) e.g. 2017_05_10 :");
 		String time = s.nextLine();
-		Flights flights = resSys.getFlighs(teamName,code,time);
-//		Flights flights = resSys.getFlighs(teamName,"BOS","2017_05_10");
-		
+		System.out.println("arrivalAiportCode e.g. RDU :");
+		String arrival = s.nextLine();
+
+		Flights flights = driverManager.searchFlightsWithoutStop(arrival, time, code);
+
 		for (Flight flight : flights) {
 			System.out.println(flight.toString());
 		}
-		break;
-		}
+		System.out.println("finished");
+//		break;
+//		}
+		
 	}
 }
