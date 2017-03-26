@@ -30,7 +30,7 @@ public class DriverManager {
 		Flights flights2 = resSys.getFlighs("TeamE",Arrival,time,false);
 		flights2.sortByArrivalAirport();
 		
-		for(Flight f1 : flights1){}
+//		for(Flight f1 : flights1){}
 		
 //		Flights flights2 =
 		
