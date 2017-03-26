@@ -8,8 +8,17 @@ public class Time {
 	private String clock;
 	private String timeZone;
 	
+	private String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 	
-	Time( int year, String month,int day, String clock,String timeZone){
+	public Time(int year, int month, int day, String clock, String timeZone){
+		this.year = year;
+		this.month = months[month - 1];
+		this.day = day;
+		this.clock = clock;
+		this.timeZone = timeZone;
+	}
+	
+	public Time( int year, String month,int day, String clock,String timeZone){
 //		if (!isValidYear(year)) 
 //			throw new IllegalArgumentException(year);
 //		if (!isValidMonth(month)) 
