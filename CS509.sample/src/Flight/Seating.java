@@ -65,7 +65,7 @@ public class Seating {
 	public void setCoachRemaining(int coachRemaining) {
 		this.coachRemaining = coachRemaining;
 	}
-	
+
 	
 	
 }
