@@ -410,8 +410,11 @@ public class Airport {
 			return days;
 		}
 		
-		public Time localTime2GMT (int year, int month, int day, int hour, int minute){
+		public Time localTime2GMT (int year, int month, int day, String clock){
 			
+			String[] localClock = clock.split(":");
+			int hour = Integer.parseInt(localClock[0]);
+			int minute = Integer.parseInt(localClock[1]);
 			int timeZone = this.getTimeZone();
 			int days = this.getDaysByMonth(year, months[month - 1]);
 			int GMTYear = year;
@@ -437,13 +440,18 @@ public class Airport {
 				GMTYear += 1;
 			}
 			
-			String clock = Integer.toString(GMTHour) + ":" + Integer.toString(GMTMinute);
+			String GMTClock = Integer.toString(GMTHour) + ":" + Integer.toString(GMTMinute);
 			
-			return new Time(GMTYear, months[GMTMonth - 1] , GMTDay, clock, "GMT"); 
+			return new Time(GMTYear, months[GMTMonth - 1] , GMTDay, GMTClock, "GMT"); 
 			
 		}
 		
-		public Time GMT2localTime(int year, int month, int day, int hour, int minute){
+		public Time GMT2localTime(int year, int month, int day, String clock){
+			
+			String[] GMTClock = clock.split(":");
+			int hour = Integer.parseInt(GMTClock[0]);
+			int minute = Integer.parseInt(GMTClock[1]);
+			
 			int timeZone = this.getTimeZone();
 			int days = this.getDaysByMonth(year, months[month - 1]);
 			int localYear = year;
@@ -469,9 +477,9 @@ public class Airport {
 				localYear -= 1;
 			}
 			
-			String clock = Integer.toString(localHour) + ":" + Integer.toString(localMinute);
+			String localClock = Integer.toString(localHour) + ":" + Integer.toString(localMinute);
 			
-			return new Time(localYear, months[localMonth - 1], localDay, clock, "UTC" + Integer.toString(timeZone));
+			return new Time(localYear, months[localMonth - 1], localDay, localClock, "UTC" + Integer.toString(timeZone));
 			
 		}
 	
