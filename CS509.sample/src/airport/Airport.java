@@ -5,6 +5,8 @@ package airport;
 
 import utils.Saps;
 
+import Time.Time;
+
 /**
  * This class holds values pertaining to a single Airport. Class member attributes
  * are the same as defined by the CS509 server API and store values after conversion from
@@ -371,5 +373,106 @@ public class Airport {
 		}
 		return isValidLongitude (lon);
 	}
-
+	
+	// this is very primitive calculate
+		public int getTimeZone(){
+			return (int)mLongitude * 24 / 360;
+		}
+		
+		private String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+		
+		public int getDaysByMonth(int year, String month){
+			int days = 30;
+			switch(month){
+			case "Jan":
+			case "Mar":
+			case "May":
+			case "Jul":
+			case "Aug":
+			case "Oct":
+			case "Dec":
+				days = 31;
+				break;
+			case "Feb":
+				if(year % 400 == 0)
+					days = 29;
+				else if(year % 4 == 0)
+					days = 29;
+				else
+					days = 28;
+				break;
+			case "Apr":
+			case "Jun":
+			case "Sep":
+			case "Nov":
+				days = 30;
+			}
+			return days;
+		}
+		
+		public Time localTime2GMT (int year, int month, int day, int hour, int minute){
+			
+			int timeZone = this.getTimeZone();
+			int days = this.getDaysByMonth(year, months[month - 1]);
+			int GMTYear = year;
+			int GMTMonth = month;
+			int GMTDay = day;
+			int GMTHour = hour;
+			int GMTMinute = minute;
+			
+			GMTHour = hour - timeZone;
+			
+			if(GMTHour >= 24){
+				GMTHour -= 24;
+				GMTDay += 1;
+			}
+			
+			if(GMTDay > days){
+				GMTDay -= days;
+				GMTMonth += 1;
+			}
+			
+			if(GMTMonth > 12){
+				GMTMonth -= 12;
+				GMTYear += 1;
+			}
+			
+			String clock = Integer.toString(GMTHour) + ":" + Integer.toString(GMTMinute);
+			
+			return new Time(GMTYear, months[GMTMonth - 1] , GMTDay, clock, "GMT"); 
+			
+		}
+		
+		public Time GMT2localTime(int year, int month, int day, int hour, int minute){
+			int timeZone = this.getTimeZone();
+			int days = this.getDaysByMonth(year, months[month - 1]);
+			int localYear = year;
+			int localMonth = month;
+			int localDay = day;
+			int localHour = hour;
+			int localMinute = minute;
+			
+			localHour = hour + timeZone;
+			
+			if(localHour <= 0){
+				localHour += 24;
+				localDay -= 1;
+			}
+			
+			if(localDay <= 0){
+				localDay += days;
+				localMonth -= 1;
+			}
+			
+			if(localMonth <= 0){
+				localMonth += 12;
+				localYear -= 1;
+			}
+			
+			String clock = Integer.toString(localHour) + ":" + Integer.toString(localMinute);
+			
+			return new Time(localYear, months[localMonth - 1], localDay, clock, "UTC" + Integer.toString(timeZone));
+			
+		}
+	
 }

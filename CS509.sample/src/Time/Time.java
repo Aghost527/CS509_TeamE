@@ -9,7 +9,7 @@ public class Time {
 	private String timeZone;
 	
 	
-	Time( int year, String month,int day, String clock,String timeZone){
+	public Time( int year, String month,int day, String clock,String timeZone){
 //		if (!isValidYear(year)) 
 //			throw new IllegalArgumentException(year);
 //		if (!isValidMonth(month)) 
