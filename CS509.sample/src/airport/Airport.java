@@ -378,7 +378,7 @@ public class Airport {
 	
 	// this is very primitive calculate
 		public int getTimeZone(){
-			return (int)mLongitude * 24 / 360;
+			return (int)Math.round(mLongitude * 24 / 360);
 		}
 		
 		private String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
