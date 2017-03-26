@@ -90,6 +90,19 @@ public class Flights extends ArrayList<Flight> {
 		}
 		return res;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		String s=null;
+		for(Flight f : this){
+			s+=f.toString()+" ; ";
+		}
+		return "Flights:"+s;
+	}
+	
+	
 	
 	}
 	

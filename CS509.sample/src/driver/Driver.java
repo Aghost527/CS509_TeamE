@@ -2,6 +2,7 @@
  * 
  */
 package driver;
+import java.util.List;
 import java.util.Scanner;
 
 import Flight.Flight;
@@ -38,17 +39,23 @@ public class Driver {
 //		while(true){
 		
 		System.out.println("departAirportCode:");	
-	    String code = s.nextLine();
+	    String departure = s.nextLine();
 		System.out.println("departTime (YYYY_MM_DD) e.g. 2017_05_10 :");
 		String time = s.nextLine();
 		System.out.println("arrivalAiportCode e.g. RDU :");
 		String arrival = s.nextLine();
 
-		Flights flights = driverManager.searchFlightsWithoutStop(arrival, time, code);
-
-		for (Flight flight : flights) {
+//		Flights flights = driverManager.searchFlightsWithoutStop(arrival, time, departure);
+		
+//		for (Flight flight : flights) {
+//			System.out.println(flight.toString());
+//		}
+		
+		List<Flights> flightlis = driverManager.searchFlightsWithOneStop(arrival, time, departure);
+		for(Flights flight  :flightlis){
 			System.out.println(flight.toString());
 		}
+		
 		System.out.println("finished");
 //		break;
 //		}
