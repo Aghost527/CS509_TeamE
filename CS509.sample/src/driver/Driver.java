@@ -50,13 +50,19 @@ public class Driver {
 //		for (Flight flight : flights) {
 //			System.out.println(flight.toString());
 //		}
-		
+
 		List<Flights> flightlis = driverManager.searchFlightsWithOneStop(arrival, time, departure);
 		for(Flights flight  :flightlis){
 			System.out.println(flight.toString());
 		}
 		
-		System.out.println("finished");
+//		List<Flights> flightlis = driverManager.searchFlightsWithTwoStop(arrival, time, departure);
+//		for(Flights flight  :flightlis){
+//			System.out.println(flight.toString());
+//		}
+
+		
+		System.out.println("finished: LENGTH="+flightlis.size());
 //		break;
 //		}
 		

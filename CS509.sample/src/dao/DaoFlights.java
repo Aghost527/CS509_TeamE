@@ -110,7 +110,7 @@ public class DaoFlights {
 			 */
 			
 //			
-			return new Flight( Airplane,  Number,  arrivalCode, departureCode,tDeTime ,  tArTime,
+			return new Flight( Airplane,  Number,  departureCode, arrivalCode, tDeTime , tArTime,
 					  seats,FlightTime );
 		}
 		
