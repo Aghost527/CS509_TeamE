@@ -5,6 +5,8 @@ package airport;
 
 import utils.Saps;
 
+import java.util.Arrays;
+
 import Time.Time;
 
 /**
@@ -410,15 +412,15 @@ public class Airport {
 			return days;
 		}
 		
-		public Time localTime2GMT (int year, int month, int day, String clock){
+		public Time localTime2GMT (int year, String month, int day, String clock){
 			
 			String[] localClock = clock.split(":");
 			int hour = Integer.parseInt(localClock[0]);
 			int minute = Integer.parseInt(localClock[1]);
 			int timeZone = this.getTimeZone();
-			int days = this.getDaysByMonth(year, months[month - 1]);
+			int days = this.getDaysByMonth(year, month);
 			int GMTYear = year;
-			int GMTMonth = month;
+			int GMTMonth = Arrays.asList(months).indexOf(month) + 1;
 			int GMTDay = day;
 			int GMTHour = hour;
 			int GMTMinute = minute;
@@ -446,16 +448,16 @@ public class Airport {
 			
 		}
 		
-		public Time GMT2localTime(int year, int month, int day, String clock){
+		public Time GMT2localTime(int year, String month, int day, String clock){
 			
 			String[] GMTClock = clock.split(":");
 			int hour = Integer.parseInt(GMTClock[0]);
 			int minute = Integer.parseInt(GMTClock[1]);
 			
 			int timeZone = this.getTimeZone();
-			int days = this.getDaysByMonth(year, months[month - 1]);
+			int days = this.getDaysByMonth(year, month);
 			int localYear = year;
-			int localMonth = month;
+			int localMonth = Arrays.asList(months).indexOf(month) + 1;
 			int localDay = day;
 			int localHour = hour;
 			int localMinute = minute;
