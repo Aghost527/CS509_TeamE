@@ -91,8 +91,10 @@ public class ServerInterface {
 		
 	}
 	
-	
-	public Flights getFlighs (String teamName, String airportCode, String Date) {
+	/**
+	 * get Flights, false: by arrival; true: by departure
+	 */
+	public Flights getFlighs (String teamName, String airportCode, String Date, boolean isByDeparture) {
 
 		URL url;
 		HttpURLConnection connection;
@@ -107,7 +109,8 @@ public class ServerInterface {
 			/**
 			 * Create an HTTP connection to the server for a GET 
 			 */
-			url = new URL(mUrlBase + QueryFactory.getDepartingAirplanes(teamName,airportCode,Date));
+			if(isByDeparture)url = new URL(mUrlBase + QueryFactory.getDepartingAirplanes(teamName,airportCode,Date));
+			else url = new URL(mUrlBase + QueryFactory.getArrivingAirplanes(teamName,airportCode,Date));
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("GET");
 			connection.setRequestProperty("User-Agent", teamName);

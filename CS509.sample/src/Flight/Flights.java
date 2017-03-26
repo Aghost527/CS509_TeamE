@@ -18,14 +18,14 @@ public class Flights extends ArrayList<Flight> {
 
 	    
 	}
-	public void sortByArrivalAirport(Flights flight){
+	public void sortByArrivalAirport(){
 		 Comparator<Flight> comparator = new Comparator<Flight>(){
 				 public int compare(Flight o1, Flight o2) {
 			 return o1.getArrival().compareTo(o2.getArrival());
 				 }
 		 };
 				 
-	    Collections.sort(flight, comparator);
+	    Collections.sort(this, comparator);
 
 	    
 	}
