@@ -50,8 +50,8 @@ public class Flight {
 	 * @param arrivalTime2
 	 * @param seats
 	 */
-	public Flight(String airplane, String number,  String departure, String arrival,
-			 Time departureTime,Time arrivalTime, Seating seats, int flightTime) {
+	public Flight(String airplane, String number, String arrival, String departure, 
+			Time arrivalTime, Time departureTime, Seating seats, int flightTime) {
 		super();
 		if (!isValidCode(departure)) 
 			throw new IllegalArgumentException(departure);

@@ -95,7 +95,7 @@ public class Flights extends ArrayList<Flight> {
 	 */
 	@Override
 	public String toString() {
-		String s="";
+		String s=null;
 		for(Flight f : this){
 			s+=f.toString()+" ; ";
 		}
