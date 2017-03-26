@@ -36,11 +36,9 @@ public class DriverManager {
 
 		System.out.println(flights2.size());
 		
-		String tmp = "";
+	
 		for(Flight f1 : flights1){
-//			if (!tmp.equals(f1.getArrival())){
-//				tmp=f1.getArrival();}
-//			System.out.println(f1.getArrival());
+//			
 			for(Flight f2 :flights2){
 				System.out.println(f2.getDeparture());
 				if(f1.getArrival().equals(f2.getDeparture())){
